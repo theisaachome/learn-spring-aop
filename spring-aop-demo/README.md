@@ -69,3 +69,39 @@ public class AppLoggingAspect {
 }
 
 ```
+
+## PointCut in Action
+
+### Specific class's method
+```java
+  @Before("execution(public void com.isaachome.dao.AccountDAO.addAccount())")
+    public  void beforeAccountDAOAddAccountAdvice(){
+        System.out.println("==========> Executing @Before on addAccount() from AccountADO");
+    }
+```
+
+### Method that start with Add using wildcard
+
+```java
+    // method that start with add in any class.
+    @Before("execution(public void add*())")
+    public  void anyMethodThatStartWithAdd(){
+        System.out.println("==========> Executing @Before on method start with Add.");
+    }
+```
+### Match method with String return type
+```java
+ // match method  with String return type
+    @Before("execution(String add*())")
+    public  void matchStringReturnType(){
+        System.out.println("==========> Executing @Before on method that return String type.");
+    }
+```
+### Match method with Boolean return type
+```java 
+    // match method  with String return type
+    @Before("execution(boolean is*())")
+    public  void isMember(){
+        System.out.println("==========> Executing @Before on method that return Boolean type.");
+    }
+```
